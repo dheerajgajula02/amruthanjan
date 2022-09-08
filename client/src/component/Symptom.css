@@ -1,0 +1,80 @@
+.symContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
+}
+
+.multiSelectContainer {
+    margin-bottom: 100px;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+}
+
+.chip {
+    background-color: #00A6A6 !important;
+}
+
+.highlightOption {
+    background: #00A6A6 !important;
+}
+
+.symButtons {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #F49F0A;
+    color: white;
+    font-weight: 400;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    font-family: 'Poppins';
+    font-size: 13px;
+}
+
+.greenButton {
+    background-color: #00A6A6;
+}
+
+.allSymButtons {
+    width: 70%;
+}
+
+.reportDisease {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    background-color: #EAF2FF;
+    padding: 30px;
+    font-size: 14px;
+    box-shadow: 6px 0px 24px -4px rgba(0, 0, 0, 0.64);
+    margin-bottom: 100px;
+}
+
+@media screen and (max-width:786px) {
+    .symContainer {
+        margin-top: 10%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .searchSize {
+        width: 90% !important;
+    }
+
+    .allSymButtons {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .symContainer {
+        margin-top: 30%;
+    }
+}
