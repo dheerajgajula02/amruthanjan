@@ -28,37 +28,37 @@ const Symptom = () => {
     const [precaution, setPrecaution] = useState([])
     const [desc, setDesc] = useState()
     const [displayDoctor, setDisplayDoctor] = useState(false)
-    //var name=useGlobalState('token')[0].email
-    //    if(name){
-    //        name=name.split('@')[0]
-    //    }
-    //    console.log(name)
+    // //var name=useGlobalState('token')[0].email
+    // //    if(name){
+    // //        name=name.split('@')[0]
+    // //    }
+    // //    console.log(name)
 
-    const getSelectedSearchedItems = () => {
-        return multiselectRef.current.getSelectedItems()
-    }
-    const ClickHandler = (value) => {
-        console.log(value.key)
-        if (answerState.indexOf(value.key) <= -1) {
+    // const getSelectedSearchedItems = () => {
+    //     return multiselectRef.current.getSelectedItems()
+    // }
+    // const ClickHandler = (value) => {
+    //     console.log(value.key)
+    //     if (answerState.indexOf(value.key) <= -1) {
 
-            setAnswerset([...answerState, value.key])
-        } else {
+    //         setAnswerset([...answerState, value.key])
+    //     } else {
 
-            let filteredQuestion = answerState.filter(item => item !== value.key)
-            setAnswerset(filteredQuestion)
-        }
-    }
+    //         let filteredQuestion = answerState.filter(item => item !== value.key)
+    //         setAnswerset(filteredQuestion)
+    //     }
+    // }
 
-    const getAnswerState = () => {
-        var selectedSearchedSymptoms = multiselectRef.current.getSelectedItems()
-        for (var i = 0; i < selectedSearchedSymptoms.length; i++) {
+    // const getAnswerState = () => {
+    //     var selectedSearchedSymptoms = multiselectRef.current.getSelectedItems()
+    //     for (var i = 0; i < selectedSearchedSymptoms.length; i++) {
 
-            //console.log(selectedSearchedSymptoms.indexOf(selectedSearchedSymptoms[i]))
-            setAnswerset([...answerState, selectedSearchedSymptoms[i]])
+    //         //console.log(selectedSearchedSymptoms.indexOf(selectedSearchedSymptoms[i]))
+    //         setAnswerset([...answerState, selectedSearchedSymptoms[i]])
 
 
-        }
-    }
+    //     }
+    // }
     const nextQuestionSubmit = () => {
 
 
@@ -112,8 +112,17 @@ const Symptom = () => {
 
     return (
         <>
-
-            <h1 className="heading">Summarised Report of Symptoms and Treatment</h1>
+            <header id="header">
+                <nav>
+                    <div class="text-center">
+                        <a class="nav-brand text-dark">
+                            {
+                                !displayAnswer? <>Symptoms</> : <>Report</>
+                            }
+                        </a>
+                    </div>
+                </nav>
+            </header>
             {
                 !displayAnswer ? (
                     <div className="symContainer">
@@ -159,8 +168,8 @@ const Symptom = () => {
                         {/* yellow region */}
 
                         <div className='d-flex flex-row justify-content-center '>
-                            <button style={{ marginRight: '50px', border: 'none', borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: '#00A6A6', color: 'white', }} onClick={submitHandler}>submit</button>
-                            <button style={{ border: 'none', borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: 'black', color: 'white', }} onClick={nextQuestionSubmit}>next</button>
+                            <button style={{ marginRight: '50px', border: 'none', borderRadius: '5px', cursor: "pointer", marginTop: '20px', padding: '6px 20px', backgroundColor: '#00A6A6', color: 'white', }} onClick={submitHandler}>submit</button>
+                            <button style={{ border: 'none', borderRadius: '5px', marginTop: '20px', cursor: "pointer", padding: '6px 20px', backgroundColor: 'black', color: 'white', }} onClick={nextQuestionSubmit}>next</button>
 
                         </div>
 
