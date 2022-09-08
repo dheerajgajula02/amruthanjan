@@ -157,25 +157,7 @@ const Symptom = () => {
 
                         </div>
                         {/* yellow region */}
-                        <div className="allSymButtons">
 
-                            {
-                                questionState.map((key, value) => (
-                                    <>
-                                        <SymptomButton onClick={() => ClickHandler({ key })}
-                                            item={key}
-                                            selected={getSelected({ key })}
-                                        ></SymptomButton>
-
-                                    </>
-
-
-
-                                ))
-
-                            }
-
-                        </div>
                         <div className='d-flex flex-row justify-content-center '>
                             <button style={{ marginRight: '50px', border: 'none', borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: '#00A6A6', color: 'white', }} onClick={submitHandler}>submit</button>
                             <button style={{ border: 'none', borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: 'black', color: 'white', }} onClick={nextQuestionSubmit}>next</button>
