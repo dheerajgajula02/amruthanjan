@@ -1,18 +1,12 @@
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from array import array
 from random import random
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware import Middleware
 import numpy as np
 import pickle
 
-app = FastAPI()
-app.add_middleware(CORSMiddleware,
-                   allow_origins=["http://127.0.0.1:3000"],
-                   allow_credentials=True,
-                   allow_methods=['*'],
-                   allow_headers=['*'])
-
+app = Flask(__name__)
+CORS(app)
 
 with open('model_pkl.pkl' , 'rb') as f:
     classifier = pickle.load(f)
@@ -59,15 +53,12 @@ disease = ['Fungal infection',
  'Psoriasis',
  'Impetigo']
 
-@app.post('/api/disease')
-async def sample(body:dict) : 
-    # print(body['symptom'])
-    # randomLabel = np.random.randint(2, size=132)
-    a = classifier.predict_proba([body['symptom']])[0]
-    top_4_idx = list(np.argsort(a)[-4:])
-    # top_2_values = [a[i] for i in top_2_idx]
-    # dict(sorted(x.items(), key=lambda item: item[1]))
-    # print(disease[top_2_idx[0]])
-    ans = [disease[i] for i in top_4_idx]
-    return {"prediction": ans}
-
+@app.route('/api/disease', methods=["POST"])
+def testpost():
+     body = request.get_json(force=True)['data']
+     print(body)
+     a = classifier.predict_proba([body['symptom']])[0]
+     top_4_idx = list(np.argsort(a)[-4:])
+     ans = [disease[i] for i in top_4_idx]
+     dictToReturn = {'text':ans}
+     return jsonify(dictToReturn)

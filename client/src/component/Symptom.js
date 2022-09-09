@@ -83,17 +83,21 @@ const Symptom = () => {
         })
     }
 
+    const data = {
+        "symptom"  : [0,1,0,0,1,1,0,1,0,0,0,1,1,0,0,1,0,0,1,1,0,0,1,0,0,1,0,1,0,0,0,1,0,1,0,0,1,1,1,0,1,0,1,0,1,0,0,0,0,1,1,0,0,0,1,0,0,1,1,0,1,0,1,0,1,1,0,0,1,1,0,1,1,1,0,0,0,1,1,0,1,1,0,1,1,0,0,1,0,0,1,0,1,0,0,0,1,1,1,1,0,0,0,1,0,1,1,0,0,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,0,1,0,1,0,1,0]
+    }
+
     const submitHandler = () => {
-        axios.post('http://localhost:5000/api/v1/ml/predict', {
-            answerState
+        axios.post('http://localhost:5000/api/disease', {
+            data
         }).then(res => {
             console.log(res)
-            setDisplayAnswer(true)
-            setDisease(res.data.probabilityArray.answer)
-            console.log(res.data.probabilityArray.other_symp)
-            setOtherSymp(res.data.probabilityArray.other_symp)
-            setPrecaution(res.data.probabilityArray.precaution)
-            setDesc(res.data.probabilityArray.description)
+            // setDisplayAnswer(true)
+            // setDisease(res.data.probabilityArray.answer)
+            // console.log(res.data.probabilityArray.other_symp)
+            // setOtherSymp(res.data.probabilityArray.other_symp)
+            // setPrecaution(res.data.probabilityArray.precaution)
+            // setDesc(res.data.probabilityArray.description)
 
         }).catch(err => {
             console.log(err)
@@ -203,25 +207,6 @@ const Symptom = () => {
                                 <p>We found out you are dignosed with</p>
                                 <h1 style={{ fontFamily: 'Bebas Neue', textAlign: 'center', color: '#F49F0A', fontSize: '60px' }}>{disease}</h1>
                                 <p style={{ color: '#00A6A6', fontWeight: '500' }}>{desc}</p>
-                                The other common symptoms of this disease are:
-                                <div className='d-flex flex-wrap'>
-                                    {
-                                        otherSymp.map((key, value) => (
-                                            <p style={{ marginRight: '10px', fontWeight: 500 }}>{key},</p>
-                                        ))
-                                    }
-                                </div>
-
-                                <p>You can take following preacution in case of mild symptoms:</p>
-                                <ul>
-                                    <div className='d-flex flex-column'>
-                                        {
-                                            precaution.map((key, value) => (
-                                                <li style={{ marginRight: '10px' }}>{key}</li>
-                                            ))
-                                        }
-                                    </div>
-                                </ul>
                                 <p style={{ fontWeight: 500 }}>NOTE** In case these symptoms become severe we recommend you to visit your Doctor, you can show this report to them</p>
 
                                 <button onClick={showDoctor} className='form-submit' style={{ 'border': 'none' }}>Consult specialist</button>
