@@ -23,8 +23,8 @@ const Symptom = () => {
     const submitHandler = () => {
         setDisease([])
         setprob([])
-        for(var i=0;i<send_data.length;i++){
-            send_data[i]=0;
+        for (var i = 0; i < send_data.length; i++) {
+            send_data[i] = 0;
         }
         for (var i = 0; i < answerState.length; i++) {
             send_data[obj[answerState[i]]] = 1;
@@ -71,74 +71,54 @@ const Symptom = () => {
             </header>
 
             <div className="symContainer">
-                        <div className="searchSize" style={{ width: '50%' }}>
-                            <Multiselect
-                                className="symSearch"
-                                isObject={false}
-                                options={opt}
-                                ref={multiselectRef}
-                                onSelect={(event) => {
-                                    answerState.push(event[event.length - 1])
-                                    console.log(answerState)
-                                    temp.add(event[event.length - 1]);
-                                }}
-                                onRemove={(event) => {
-                                    // console.log(event)
-                                    for (let value of temp) {
-                                        var f = 0
-                                        for (var i = 0; i < event; i++) {
-                                            if (event[i] == value) {
-                                                f = 1;
-                                                break;
-                                            }
-                                        }
-                                        if (!f) {
-                                            var filteredQuestion = []
-                                            for (var i = 0; i < answerState.length; i++)
-                                                if (answerState[i] != value)
-                                                    filteredQuestion.push(answerState[i]);
-                                            setAnswerset(filteredQuestion)
-                                            temp.delete(value);
-                                            break;
-                                        }
-                                    }
+                <div className="searchSize" style={{ width: '50%' }}>
+                    <Multiselect
+                        className="symSearch"
+                        isObject={false}
+                        options={opt}
+                        ref={multiselectRef}
+                        onSelect={(event) => {
+                            setAnswerset(event)
+                            console.log(answerState)
+
+                        }}
+                        onRemove={(event) => {
+                            console.log(answerState)
+                            setAnswerset(event)
+                        }}
+                    />
 
 
-                                    console.log(answerState)
-                                }}
-                            />
+                </div>
 
+                <div className='d-flex flex-row justify-content-center '>
+                    <button style={{ marginRight: '50px', border: 'none', cursor: "pointer", borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: '#00A6A6', color: 'white', }} onClick={submitHandler}>submit</button>
+                </div>
+            </div>
 
-                        </div>
-
-                        <div className='d-flex flex-row justify-content-center '>
-                            <button style={{ marginRight: '50px', border: 'none', cursor: "pointer", borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: '#00A6A6', color: 'white', }} onClick={submitHandler}>submit</button>
+            {displayAnswer ? (<div>
+                <div className='reportDisease  mt-4'>
+                    <div className='d-flex flex-row'>
+                        As per your symptoms:
+                        <div className='d-flex flex-row ml-3'>
+                            {
+                                answerState.map((key, value) => (
+                                    <p style={{ marginRight: '10px', fontWeight: '500' }}>{key},</p>
+                                ))
+                            }
                         </div>
                     </div>
 
-                        { displayAnswer? (<div>
-                            <div className='reportDisease  mt-4'>
-                                <div className='d-flex flex-row'>
-                                    As per your symptoms:
-                                    <div className='d-flex flex-row ml-3'>
-                                        {
-                                            answerState.map((key, value) => (
-                                                <p style={{ marginRight: '10px', fontWeight: '500' }}>{key},</p>
-                                            ))
-                                        }
-                                    </div>
-                                </div>
-
-                                <p>We found out you are dignosed with</p>
-                                <h1 style={{ fontFamily: 'Bebas Neue', textAlign: 'center', color: '#F49F0A', fontSize: '60px' }}>{disease[0]}</h1>
-                                <p style={{ color: '#00A6A6', fontWeight: '500' }}>{desc}</p>
-                                <p style={{ fontWeight: 500 }}>NOTE** In case these symptoms become severe we recommend you to visit your Doctor, you can show this report to them</p>
-                            </div>
+                    <p>We found out you are dignosed with</p>
+                    <h1 style={{ fontFamily: 'Bebas Neue', textAlign: 'center', color: '#F49F0A', fontSize: '60px' }}>{disease[0]}</h1>
+                    <p style={{ color: '#00A6A6', fontWeight: '500' }}>{desc}</p>
+                    <p style={{ fontWeight: 500 }}>NOTE** In case these symptoms become severe we recommend you to visit your Doctor, you can show this report to them</p>
+                </div>
 
 
 
 
-                        </div>):<></>}
+            </div>) : <></>}
         </>
     )
 }
