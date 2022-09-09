@@ -38,31 +38,31 @@ const Symptom = () => {
     //    }
     //    console.log(name)
 
-    const getSelectedSearchedItems = () => {
-        return multiselectRef.current.getSelectedItems()
-    }
-    const ClickHandler = (value) => {
-        console.log(value.key)
-        if (answerState.indexOf(value.key) <= -1) {
+    // const getSelectedSearchedItems = () => {
+    //     return multiselectRef.current.getSelectedItems()
+    // }
+    // const ClickHandler = (value) => {
+    //     console.log(value.key)
+    //     if (answerState.indexOf(value.key) <= -1) {
 
-            setAnswerset([...answerState, value.key])
-        } else {
+    //         setAnswerset([...answerState, value.key])
+    //     } else {
 
-            let filteredQuestion = answerState.filter(item => item !== value.key)
-            setAnswerset(filteredQuestion)
-        }
-    }
+    //         let filteredQuestion = answerState.filter(item => item !== value.key)
+    //         setAnswerset(filteredQuestion)
+    //     }
+    // }
 
-    const getAnswerState = () => {
-        var selectedSearchedSymptoms = multiselectRef.current.getSelectedItems()
-        for (var i = 0; i < selectedSearchedSymptoms.length; i++) {
+    // const getAnswerState = () => {
+    //     var selectedSearchedSymptoms = multiselectRef.current.getSelectedItems()
+    //     for (var i = 0; i < selectedSearchedSymptoms.length; i++) {
 
-            //console.log(selectedSearchedSymptoms.indexOf(selectedSearchedSymptoms[i]))
-            setAnswerset([...answerState, selectedSearchedSymptoms[i]])
+    //         //console.log(selectedSearchedSymptoms.indexOf(selectedSearchedSymptoms[i]))
+    //         setAnswerset([...answerState, selectedSearchedSymptoms[i]])
 
 
-        }
-    }
+    //     }
+    // }
     const nextQuestionSubmit = () => {
 
 
@@ -87,6 +87,11 @@ const Symptom = () => {
         })
     }
 
+    const data = {
+        "symptom": [0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0]
+    }
+
+
     const submitHandler = () => {
         for (var i = 0; i < answerState.length; i++) {
             send_data[obj[answerState[i]]] = 1;
@@ -95,7 +100,7 @@ const Symptom = () => {
         const data = {
             "symptom": send_data
         }
-        axios.post('http://127.0.0.1:8000/disease', {
+        axios.post('http://127.0.0.1:5000/api/disease', {
             data
         }).then(res => {
             console.log(res)
@@ -124,7 +129,18 @@ const Symptom = () => {
     return (
         <>
 
-            <h1 className="heading">Summarised Report of Symptoms and Treatment</h1>
+            <header id="header">
+                <nav>
+                    <div class="text-center">
+                        <a class="nav-brand text-dark">
+                            {
+                                !displayAnswer ? <>Symptoms</> : <>Report</>
+                            }
+                        </a>
+                    </div>
+                </nav>
+            </header>
+
             {
                 !displayAnswer ? (
                     <div className="symContainer">
