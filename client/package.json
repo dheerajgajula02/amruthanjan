@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "multiselect-react-dropdown": "^2.0.25",

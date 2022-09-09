@@ -1,11 +1,19 @@
 from array import array
 from random import random
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 import pickle
 
 app = FastAPI()
-
+origins = ["*"]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=[""],
+    allow_headers=[""],
+)
 with open('model_pkl.pkl' , 'rb') as f:
     classifier = pickle.load(f)
 
