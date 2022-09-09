@@ -63,29 +63,29 @@ const Symptom = () => {
 
     //     }
     // }
-    const nextQuestionSubmit = () => {
+    // const nextQuestionSubmit = () => {
 
 
-        axios.post('http://localhost:5000/api/v1/ml/disease', {
-            answerState
-        }).then(res => {
-            console.log(res.data.probabilityArray.answer)
-            if (res.data.probabilityArray.answer) {
-                console.log(res.data.probabilityArray.answer)
-                if (res.data.probabilityArray.answer.length === 0) {
-                    setDisplayAnswer(true)
-                } else {
-                    setQuestionset(res.data.probabilityArray.answer)
-                }
+    //     axios.post('http://localhost:5000/api/v1/ml/disease', {
+    //         answerState
+    //     }).then(res => {
+    //         console.log(res.data.probabilityArray.answer)
+    //         if (res.data.probabilityArray.answer) {
+    //             console.log(res.data.probabilityArray.answer)
+    //             if (res.data.probabilityArray.answer.length === 0) {
+    //                 setDisplayAnswer(true)
+    //             } else {
+    //                 setQuestionset(res.data.probabilityArray.answer)
+    //             }
 
-            } else {
-                console.log(res.data.probabilityArray.answer)
-            }
+    //         } else {
+    //             console.log(res.data.probabilityArray.answer)
+    //         }
 
-        }).catch(err => {
-            console.log(err)
-        })
-    }
+    //     }).catch(err => {
+    //         console.log(err)
+    //     })
+    // }
 
 
 
@@ -183,8 +183,8 @@ const Symptom = () => {
                         {/* yellow region */}
 
                         <div className='d-flex flex-row justify-content-center '>
-                            <button style={{ marginRight: '50px', border: 'none', borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: '#00A6A6', color: 'white', }} onClick={submitHandler}>submit</button>
-                            <button style={{ border: 'none', borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: 'black', color: 'white', }} onClick={nextQuestionSubmit}>next</button>
+                            <button style={{ marginRight: '50px', border: 'none', cursor: "pointer", borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: '#00A6A6', color: 'white', }} onClick={submitHandler}>submit</button>
+                            {/* <button style={{ border: 'none', borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: 'black', color: 'white', }} onClick={nextQuestionSubmit}>next</button> */}
 
                         </div>
 
