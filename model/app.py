@@ -59,6 +59,9 @@ def testpost():
      print(body)
      a = classifier.predict_proba([body['symptom']])[0]
      top_4_idx = list(np.argsort(a)[-4:])
+     top_4_idx.reverse()
      ans = [disease[i] for i in top_4_idx]
-     dictToReturn = {'text':ans}
+     prob = [a[i]*100 for i in top_4_idx]
+     print(a)
+     dictToReturn = {'disease':ans,'prob' : prob}
      return jsonify(dictToReturn)
