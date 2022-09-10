@@ -91,29 +91,23 @@ const Symptom = () => {
 
                 </div>
 
-                <div className='d-flex flex-row justify-content-center '>
-                    <button style={{ marginRight: '50px', border: 'none', cursor: "pointer", borderRadius: '5px', marginTop: '20px', padding: '6px 20px', backgroundColor: '#00A6A6', color: 'white', }} onClick={submitHandler}>submit</button>
+                <div class="container text-center">
+                    <button class="btn btn-dark" onClick={submitHandler}>submit</button>
                 </div>
             </div>
 
-            {displayAnswer ? (<div>
-                <div className='reportDisease  mt-4'>
-                    <div className='d-flex flex-row'>
-                        As per your symptoms:
-                        <div className='d-flex flex-row ml-3'>
-                            {
-                                answerState.map((key, value) => (
-                                    <p style={{ marginRight: '10px', fontWeight: '500' }}>{key},</p>
-                                ))
-                            }
-                        </div>
+            {displayAnswer ? (<div class='d-flex container m-5'>
+                {
+                disease.map((key,value) => (
+                <div class="col-sm m-5">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{key}</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
-
-                    <p>We found out you are dignosed with</p>
-                    <h1 style={{ fontFamily: 'Bebas Neue', textAlign: 'center', color: '#F49F0A', fontSize: '60px' }}>{disease[0]}</h1>
-                    <p style={{ color: '#00A6A6', fontWeight: '500' }}>{desc}</p>
-                    <p style={{ fontWeight: 500 }}>NOTE** In case these symptoms become severe we recommend you to visit your Doctor, you can show this report to them</p>
-                </div>
+                  </div>
+              </div>))}
 
 
 
