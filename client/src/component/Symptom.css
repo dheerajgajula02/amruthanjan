@@ -1,8 +1,18 @@
+body{
+    background-image: url("../doctor1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    font-family:Verdana, Geneva, Tahoma, sans-serif !important;
+}
+
+
+
 .symContainer {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    /* height: 80vh; */
     flex-direction: column;
 }
 
@@ -11,7 +21,7 @@
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
-
+    background-color: whitesmoke;
 }
 
 .chip {
@@ -55,7 +65,7 @@
     margin-bottom: 100px;
 }
 
-@media screen and (max-width:786px) {
+
     .symContainer {
         margin-top: 10%;
         width: 100%;
@@ -71,18 +81,14 @@
     .allSymButtons {
         width: 100%;
     }
-}
 
-@media screen and (max-width:400px) {
-    .symContainer {
-        margin-top: 30%;
-    }
-}
+
 
 #header nav{
-    background-color: #00A6A6;
+    background-color: rgb(128, 172, 248);
     padding: 1em 0;
     width: 100%;
+    border-radius: 5px;
 }
 
 .text-center{
@@ -90,11 +96,56 @@
 }
 
 .nav-brand{
-    font-size: 1.5em;
-    font-weight: bold;
+    text-decoration: none!important;
+    /* font-style: bold; */
+    font-size: 30px;
+    font-weight: normal !important;
 }
 
 .text-dark{
     color: #2b2d42;
 }
+.card-title
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:#ad1456;
+    font-size: 25px;
+}
+.card-prob
+{
+    color:rgb(204, 91, 10);
+}
+.cardback
+{
+    background-color: rgb(233, 236, 241);
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    z-index: 10;
+}
+/* body::-webkit-scrollbar
+{
+    display: none;
+} */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(216, 216, 225);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:rgb(171, 171, 201);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(140, 140, 210);
+  }
 
