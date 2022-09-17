@@ -65,8 +65,8 @@ const Symptom = () => {
 
             <header id="header">
                 <nav>
-                    <div class="text-center">
-                        <a class="nav-brand text-dark">
+                    <div class="text-center header1">
+                        <a class="nav-brand text-dark" >
                             {
                                 !displayAnswer ? <>Symptoms</> : <>Report</>
                             }
@@ -97,18 +97,18 @@ const Symptom = () => {
                 </div>
 
                 <div class="container text-center">
-                    <button class="btn btn-dark" onClick={submitHandler}>submit</button>
+                    <button class="btn px-5 pt-2 btn-success" onClick={submitHandler}><h5>Submit</h5></button>
                 </div>
             </div>
             {           
-            displayAnswer ? (<div class='d-flex container m-5'>
+            displayAnswer ? (<div class='m-5'>
                 {
                 disease.map((key,value) => (
-                <div class="col-sm m-5">
+                <div class="row-sm m-3 p-2 ">
                   <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">{key}</h5>
-                      <p class="card-text">Probability : {desc[key]} %</p>
+                    <div class="card-body cardback">
+                      <h4 class="card-title"><b>{key}</b></h4>
+                      <p class="card-prob">Probability : {desc[key]} %</p>
                       <p class="card-text">{ddesc[key]}</p>
                       <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
