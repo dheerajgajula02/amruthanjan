@@ -1,3 +1,4 @@
+from dis import dis
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from array import array
@@ -60,8 +61,12 @@ def testpost():
      a = classifier.predict_proba([body['symptom']])[0]
      top_4_idx = list(np.argsort(a)[-4:])
      top_4_idx.reverse()
-     ans = [disease[i] for i in top_4_idx]
-     prob = [a[i]*100 for i in top_4_idx]
+     ans=list()
+     prob = {}
+     for i in top_4_idx : 
+        if (a[i]*100)!=0: 
+            ans.append(disease[i])
+            prob[disease[i]]=a[i]*100
      print(a)
      dictToReturn = {'disease':ans,'prob' : prob}
      return jsonify(dictToReturn)
